@@ -1,7 +1,14 @@
 from pyassimp import *
 import datetime
-scale = 32 # Integer that scales the model. Default is 32.
-fileName = "cube5.fbx"
+import sys
+
+print("modconv - mountainflaw")
+if (len(sys.argv) > 3):
+    print("Usage: python3 modconv.py PATHTOMODEL SCALE")
+    exit()
+fileName = str(sys.argv[1])
+scale = int(sys.argv[2])
+
 # Known formats will have labeled output depending on filename.
 if fileName.endswith('.blend'):
     fileNameOut = fileName[:-5]
@@ -11,8 +18,8 @@ else:
     fileNameOut = "output"
 print(fileNameOut)
 flag = 0
-vertU = 0
-vertV = 0
+vertU = "0"
+vertV = "0"
 
 # Default RGBA values for when the imported model has no RGBA data (0-255)
 rgbaR = 0
@@ -55,7 +62,7 @@ while (loopCount != vertexCount - 1):
         rgbaG = str(int(rgbaG))
         rgbaB = str(int(rgbaB))
         rgbaA = str(int(rgbaA))
-    vertexheader.write("{   " + vertX + ",   " + vertY + ",   " + vertZ + ",0,   0,   0," + rgbaR + "," + rgbaG + "," + rgbaB + "," + rgbaA + "},\n")
+    vertexheader.write("{   " + vertX + ",   " + vertY + ",   " + vertZ + ",0,   " + vertU +",   " + vertV + "," + rgbaR + "," + rgbaG + "," + rgbaB + "," + rgbaA + "},\n")
     loopCount = loopCount + 1
 
 lCPrnt = str(loopCount)
@@ -75,7 +82,7 @@ else:
     rgbaB = str(int(rgbaB))
     rgbaA = str(int(rgbaA))
 
-vertexheader.write("{   " + vertX + ",   " + vertY + ",   " + vertZ + ",0,   0,   0," + rgbaR + "," + rgbaG + "," + rgbaB + "," + rgbaA + "}};\n")
+vertexheader.write("{   " + vertX + ",   " + vertY + ",   " + vertZ + ",0,   " + vertU +",   " + vertV + "," + rgbaR + "," + rgbaG + "," + rgbaB + "," + rgbaA + "}};\n")
 
 
 print("Generating displaylist")
