@@ -6,4 +6,11 @@ Currently modconv can:
 * Generate unstripped vertices with vertex RGBA.
 * Prepare a basic displaylist without any faces.
 
-``Usage: python3 modconv.py PATHTOMODEL SCALE``
+# Running
+
+## Dependencies
+python3 assimp (also requires standard assimp)
+
+## Usage
+
+``python3 modconv.py PATHTOMODEL SCALE``
