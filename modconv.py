@@ -12,8 +12,7 @@ rgbaG = 0
 rgbaB = 0
 rgbaA = 255
 loopCount = 0
-scene = load(fileName
-)
+scene = load(fileName)
 assert len(scene.meshes)
 mesh = scene.meshes[0]
 assert len(mesh.vertices)
