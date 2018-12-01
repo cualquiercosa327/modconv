@@ -5,6 +5,7 @@ I am a very bad programmer so the code is super sloppy. Feel free to send a PR i
 Currently modconv can:
 * Generate unstripped vertices with vertex RGBA.
 * Prepare a basic displaylist without any faces.
+* modconv2 is able to generate basic collision for the game *Super Mario 64*.
 
 # Running
 
