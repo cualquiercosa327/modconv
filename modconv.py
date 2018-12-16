@@ -19,8 +19,8 @@ loopCount = 0
 scene = load(fileName)
 mesh = scene.meshes[0]
 vertexCount = len(mesh.vertices)
-vertexheader = open(fileNameOut + "/" + fileNameOut + ".s", "w")
-
+vertexheader = open(fileNameOut + "/" + "actor.s", "w")
+geoscriptOut = open(fileNameOut + "/" + "geo.s", "w")
 # Check for vertex colors.
 print("Checking for vertex colors...")
 try:
@@ -32,6 +32,18 @@ except:
     usingvrgba = False
 
 vertexGroupCount = 0 # Starting position for vertex group
+
+# WIP geoscript generator
+
+geoscriptOut.write("glabel " + fileNameOut + "_geo")
+geoscriptOut.write("\tgeo_shadow SHADOW_CIRCLE_UNK1, 0xC8, 70")
+geoscriptOut.write("\tgeo_open_node")
+geoscriptOut.write("\t\tgeo_scale 0x00, 65536")
+geoscriptOut.write("\t\tgeo_open_node")
+geoscriptOut.write("\t\t\tgeo_display_list 0x01, " + fileNameOut + "_dl")
+geoscriptOut.write("\t\tgeo_close_node")
+geoscriptOut.write("\tgeo_close_node")
+geoscriptOut.write("\tgeo_end")
 
 # Generate vertices
 print(str(vertexCount))
@@ -102,3 +114,4 @@ while (loopCount <= vertexCount):
     triCount += 1
 vertexheader.write("gsSPEndDisplayList")
 print("OK.\nFinished generating DL.")
+print("If you are using this model converter for a level, you can ignore the geo.s file.")
