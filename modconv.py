@@ -35,15 +35,15 @@ vertexGroupCount = 0 # Starting position for vertex group
 
 # WIP geoscript generator
 
-geoscriptOut.write("glabel " + fileNameOut + "_geo")
-geoscriptOut.write("\tgeo_shadow SHADOW_CIRCLE_UNK1, 0xC8, 70")
-geoscriptOut.write("\tgeo_open_node")
-geoscriptOut.write("\t\tgeo_scale 0x00, 65536")
-geoscriptOut.write("\t\tgeo_open_node")
-geoscriptOut.write("\t\t\tgeo_display_list 0x01, " + fileNameOut + "_dl")
-geoscriptOut.write("\t\tgeo_close_node")
-geoscriptOut.write("\tgeo_close_node")
-geoscriptOut.write("\tgeo_end")
+geoscriptOut.write("glabel " + fileNameOut + "_geo\n")
+geoscriptOut.write("\tgeo_shadow SHADOW_CIRCLE_UNK1, 0xC8, 70\n")
+geoscriptOut.write("\tgeo_open_node\n")
+geoscriptOut.write("\t\tgeo_scale 0x00, 65536\n")
+geoscriptOut.write("\t\tgeo_open_node\n")
+geoscriptOut.write("\t\t\tgeo_display_list 0x01, " + fileNameOut + "_dl\n")
+geoscriptOut.write("\t\tgeo_close_node\n")
+geoscriptOut.write("\tgeo_close_node\n")
+geoscriptOut.write("\tgeo_end\n")
 
 # Generate vertices
 print(str(vertexCount))
