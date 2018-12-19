@@ -1,3 +1,4 @@
+// Shoutouts to Simon
 #include <stdio.h>
 #include <assimp/cimport.h>
 #include <assimp/mesh.h>
@@ -26,11 +27,11 @@ void model_convert_goddard(char *in, char *output, int scale) {
 		int vertX = (int)mesh->mVertices[i].x * scale;
 		int	vertY = (int)mesh->mVertices[i].y * scale;
 		int	vertZ = (int)mesh->mVertices[i].z * scale;
-		fprintf(vertexSourcef, "{%d,\t%d,\t%d},\n", vertX, vertY, vertZ);
+		fprintf(vertexSourcef, "{%d,\t\t%d,\t\t%d},\n", vertX, vertY, vertZ);
 	}
 
 	fputs("};\n", vertexSourcef);
-	fprintf(vertexSourcef, "GdVtxData vtx_%s_data = { VTX_NUM, 0x1, verts_%s };\n#undef VTX_NUM\n", output, output);
+	fprintf(vertexSourcef, "struct GdVtxData vtx_%s_data = { VTX_NUM, 0x1, verts_%s };\n#undef VTX_NUM\n", output, output);
 
 	puts("Vertex Generation: OK");
 	puts("Generating Face Data...");
@@ -38,8 +39,8 @@ void model_convert_goddard(char *in, char *output, int scale) {
 	fprintf(vertexSourcef, "#define FACE_NUM %d\n", vertexCount + 1);
 	fprintf(vertexSourcef, "u16 facedata_%s[FACE_NUM][4] = {\n", output);
 
-	for (unsigned int i = 0; i <= vertexCount; i += 3)
-		fprintf(vertexSourcef, "{0,\t%d,\t%d,\t%d},\n", i, i + 1, i + 2);
+	for (unsigned int i = 0; i <= vertexCount; i += 3) //We should add custom material ids to this one day.
+		fprintf(vertexSourcef, "{0,\t\t%d,\t\t%d,\t\t%d},\n", i, i + 1, i + 2);
 
 	fputs("};\n", vertexSourcef);
 	fprintf(vertexSourcef, "struct GdFaceData faces_%s_data = { FACE_NUM, 0x1, facedata_%s };\n#undef FACE_NUM\n", output, output);
