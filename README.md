@@ -3,13 +3,13 @@ An experimental ASSIMP model converter for N64 development written in Python. I 
 
 Currently modconv can:
 * Generate unstripped vertices with vertex RGBA.
+* Generate dynlists for the Mario head demo for SM64.
 * Prepare a basic displaylist without any faces.
 * modconv2 is able to generate basic collision for the game *Super Mario 64*.
 
 ## Roadmap
 
 * Texture generation
-* Materials
 * Tristripping and F3DEX support
 
 # Running
@@ -20,3 +20,9 @@ python3 assimp (also requires standard assimp)
 ## Usage
 
 ``python3 modconv.py PATHTOMODEL SCALE``
+
+## CREDITS
+
+* Trenavix for answering my stupid Fast3D questions.
+* Simon for rewriting the Python scripts into C and C++.
+* tehz for explaining how parts of the Mario head work.
