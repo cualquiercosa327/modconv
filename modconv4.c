@@ -36,10 +36,10 @@ void model_convert_goddard(char *in, char *output, int scale) {
     puts("Vertex Generation: OK");
     puts("Generating Face Data...");
 
-    fprintf(vertexSourcef, "#define FACE_NUM %d\n", vertexCount + 1);
+    fprintf(vertexSourcef, "#define FACE_NUM %d\n", vertexCount / 3);
     fprintf(vertexSourcef, "u16 facedata_%s[FACE_NUM][4] = {\n", output);
 
-    for (unsigned int i = 0; i <= vertexCount; i += 3) //We should add custom material ids to this one day.
+    for (unsigned int i = 0; i < vertexCount; i += 3) //We should add custom material ids to this one day.
         fprintf(vertexSourcef, "{0,\t\t%d,\t\t%d,\t\t%d},\n", i, i + 1, i + 2);
 
     fputs("};\n", vertexSourcef);
